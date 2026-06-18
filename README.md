@@ -106,18 +106,22 @@ Default: deny (incoming), allow (outgoing), disabled (routed)
 
 To                         Action      From
 --                         ------      ----
-22/tcp                     ALLOW IN    <YOUR_LOCAL_LAPTOP_IP_HERE>
+22/tcp                     ALLOW IN    205.254.169.218
 80/tcp                     ALLOW IN    Anywhere
 8000/tcp                   ALLOW IN    Anywhere
+80/tcp (v6)                ALLOW IN    Anywhere (v6)
+8000/tcp (v6)              ALLOW IN    Anywhere (v6)
 ```
 
 **Result:**
 
-- Firewall is active.
-- Default incoming traffic is blocked.
-- Only approved ports are accessible.
+- Firewall is active and enforcing rules.
+- SSH access is restricted to the trusted IP address (`205.254.169.218`).
+- HTTP traffic is allowed on port `80`.
+- Application traffic is allowed on port `8000`.
+- IPv6 traffic is also configured for ports `80` and `8000`.
 
-This confirms the firewall policy is successfully enforced.
+This confirms the firewall configuration is correctly applied and the server is protected against unauthorized incoming connections.
 
 ---
 

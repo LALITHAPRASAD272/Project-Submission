@@ -1,135 +1,83 @@
-# Task 5: Firewall Configuration
+# DevOps Intern Technical Assignment Submission
 
-## Objective
+## Overview
 
-Configure firewall rules to block all unnecessary incoming traffic by default and allow access only to specific required ports.
+This repository contains the complete implementation of the DevOps Intern technical assignment.
 
----
-
-## Firewall Configuration Details
-
-- **Firewall Tool:** UFW (Uncomplicated Firewall)
-- **Default Incoming Policy:** Deny
-- **Default Outgoing Policy:** Allow
-- **Allowed Ports:** 22, 80, 8000
+The project covers secure server provisioning, Docker-based application deployment, automated resource monitoring, secure log management with restricted permissions, and firewall configuration for server hardening.
 
 ---
 
-## Implementation Steps
-
-### 1. Configure Default Firewall Policies
-
-Set default firewall behavior:
-
-```bash
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-```
-
-**Explanation:**
-
-- `deny incoming` → Blocks all incoming traffic by default.
-- `allow outgoing` → Allows all outbound connections.
-
-This establishes a secure default network policy.
-
----
-
-### 2. Allow SSH Access for Specific IP
-
-Restricted SSH access to only the local machine IP:
-
-```bash
-sudo ufw allow from <YOUR_LOCAL_LAPTOP_IP_HERE> to any port 22 proto tcp
-```
-
-**Explanation:**
-
-- Allows SSH only from a trusted IP address.
-- Prevents unauthorized remote SSH access.
-
-This improves security by limiting administrative access.
-
----
-
-### 3. Allow Application Ports
-
-Allowed HTTP traffic:
-
-```bash
-sudo ufw allow 80/tcp
-```
-
-Allowed custom application port:
-
-```bash
-sudo ufw allow 8000/tcp
-```
-
-**Explanation:**
-
-- Port `80` → Standard web traffic.
-- Port `8000` → Docker application access.
-
-This makes the deployed application reachable externally.
-
----
-
-### 4. Enable Firewall
-
-Activated firewall rules:
-
-```bash
-sudo ufw enable
-```
-
-This applies all configured rules immediately.
-
----
-
-## Verification
-
-### Check Firewall Status
-
-Verified active firewall configuration:
-
-```bash
-sudo ufw status verbose
-```
-
-**Output:**
+## Project Structure
 
 ```plaintext
-Status: active
-Logging: on (low)
-Default: deny (incoming), allow (outgoing), disabled (routed)
-
-To                         Action      From
---                         ------      ----
-22/tcp                     ALLOW IN    205.254.169.218
-80/tcp                     ALLOW IN    Anywhere
-8000/tcp                   ALLOW IN    Anywhere
-80/tcp (v6)                ALLOW IN    Anywhere (v6)
-8000/tcp (v6)              ALLOW IN    Anywhere (v6)
+.
+├── Task-1/
+├── Task-2/
+├── Task-3/
+├── Task-4/
+└── Task-5/
 ```
 
-**Result:**
+### Task Breakdown
 
-- Firewall is active and enforcing rules.
-- SSH access is restricted to the trusted IP address (`205.254.169.218`).
-- HTTP traffic is allowed on port `80`.
-- Application traffic is allowed on port `8000`.
-- IPv6 traffic is also configured for ports `80` and `8000`.
+### Task-1: Server Setup and SSH Configuration
 
-This confirms the firewall configuration is correctly applied and the server is protected against unauthorized incoming connections.
+* Provisioned an Ubuntu 24.04 LTS VM on Azure.
+* Configured SSH key-based authentication.
+* Disabled password-based SSH login.
+* Hardened SSH access.
 
 ---
 
-## Security Outcome
+### Task-2: Docker Installation and Application Deployment
 
-✅ Default deny policy enabled  
-✅ Outgoing traffic allowed  
-✅ SSH access restricted to trusted IP  
-✅ Web traffic allowed on port 80  
-✅ Application traffic allowed on port 8000  
-✅ Firewall active and protecting the server
+* Installed Docker on the Ubuntu server.
+* Built the application Docker image.
+* Deployed the containerized application.
+* Exposed the application on port **8000**.
+
+---
+
+### Task-3: Resource Monitoring and Cron Automation
+
+* Created a monitoring script to track container CPU and memory usage.
+* Configured cron jobs to automate monitoring every minute.
+* Logged resource metrics with timestamps.
+
+---
+
+### Task-4: Secure Monitoring Logs and Access Control
+
+* Created a dedicated low-privilege monitoring user.
+* Restricted monitoring logs using POSIX permissions.
+* Prevented unauthorized users from accessing logs.
+
+---
+
+### Task-5: Firewall Configuration
+
+* Configured UFW firewall rules.
+* Set default incoming traffic policy to deny.
+* Allowed only required ports (**22, 80, 8000**).
+* Restricted SSH access to a trusted IP.
+
+---
+
+## Video Walkthrough
+
+A complete walkthrough video demonstrating the implementation and verification steps is available below:
+
+**Google Drive Link:**
+[Insert Video Link Here]
+
+---
+
+## Final Outcome
+
+✅ Secure server setup completed
+✅ SSH hardened successfully
+✅ Docker application deployed successfully
+✅ Monitoring automation enabled
+✅ Access controls enforced
+✅ Firewall rules configured and verified

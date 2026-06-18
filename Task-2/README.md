@@ -60,13 +60,13 @@ This creates the application image locally.
 Started the container in detached mode and mapped port 8000:
 
 ```bash
-docker run -d -p 8000:8000 --name my-running-app devops-web-app:v1
+docker run -d -p 8000:80 --name my-running-app devops-web-app:v1
 ```
 
 **Explanation:**
 
 - `-d` → Runs the container in background mode.
-- `-p 8000:8000` → Maps host port 8000 to container port 8000.
+- `-p 8000:80` → Maps host port 8000 to container port 80.
 - `--name` → Assigns a custom name to the container.
 
 This deploys the application and makes it accessible externally.
@@ -87,7 +87,7 @@ docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"
 
 ```plaintext
 CONTAINER ID   NAMES            PORTS                     STATUS
-e23b45f121aa   my-running-app   0.0.0.0:8000->8000/tcp   Up About a minute
+e23b45f121aa   my-running-app   0.0.0.0:8000->80/tcp   Up About a minute
 ```
 
 **Result:**

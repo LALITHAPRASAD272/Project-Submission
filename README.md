@@ -68,7 +68,7 @@ The project covers secure server provisioning, Docker-based application deployme
 
 A complete walkthrough video demonstrating the implementation and verification steps is available below:
 
-**Google Drive Link:**
+**Video Link:**
 https://1drv.ms/v/c/b0cf52ef29e3fe5f/IQDJwlgn5sQ9Ro_mi-6pNu_7AdOFdHYeRMMQOjokEA873JI?e=z6Vqny
 
 ---
